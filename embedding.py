@@ -6,7 +6,7 @@ from config import GOOGLE_API_KEY, DEFAULT_CONFIG
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type, retry_if_result, RetryError
 
 class GeminiEmbeddingProvider:
-    def __init__(self, api_key: str = GOOGLE_API_KEY, model_name: str = "gemini-embedding-exp-03-07", 
+    def __init__(self, api_key: str = GOOGLE_API_KEY, model_name: str = "text-embedding-004", 
                  dimension: Optional[int] = DEFAULT_CONFIG["embedding_dimension"]):
         self.api_key = api_key
         self.model_name = model_name

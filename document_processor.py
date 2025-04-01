@@ -6,7 +6,8 @@ from ocr_processor import OCR
 from text_chunk import TextChunk
 from embedding import GeminiEmbeddingProvider
 from utils import log_memory_usage, log_array_info, logger, chunk_generator
-from config import DEFAULT_CONFIG
+from config import DEFAULT_CONFIG, GOOGLE_API_KEY, MISTRAL_API_KEY
+
 
 class DocumentProcessor:
     def __init__(self, ocr: OCR, embedding_provider: GeminiEmbeddingProvider, 

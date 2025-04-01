@@ -7,11 +7,10 @@ from typing import List, Optional, Dict, Tuple
 from mistralai import Mistral
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+from config import MISTRAL_API_KEY
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-
-
 
 
 @dataclass
@@ -85,9 +84,8 @@ class OCR:
             logger.info(f"Successfully uploaded PDF: {os.path.basename(pdf_path)}")
             
             self.pdf_id = uploaded_pdf.id
-            # Get the signed URL and extract the actual URL string
             signed_url_response = self.client.files.get_signed_url(file_id=self.pdf_id)
-            self.pdf_url = signed_url_response.url  # Extract the URL string from the response object
+            self.pdf_url = signed_url_response.url  
         except Exception as e:
             logger.error(f"Error uploading PDF: {e}")
             raise
@@ -98,7 +96,6 @@ class OCR:
             raise ValueError("No PDF URL found. Please upload a PDF first.")
             
         try:
-            # Correctly format the payload according to the API docs
             payload = {
                 "model": "mistral-ocr-latest",
                 "document": {

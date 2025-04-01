@@ -1,11 +1,16 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path='.env')
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 
 DEFAULT_CONFIG = {
     "chunk_size": 10000,
     "chunk_overlap": 500,
     "index_type": "Flat",
-    "embedding_dimension": 3072,
-    "max_tokens": 8000,
+    "embedding_dimension": 768,
+    "max_tokens": 2000,
     "log_level": "INFO",
     
     "retry_max_attempts": 5,

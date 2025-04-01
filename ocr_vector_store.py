@@ -110,7 +110,7 @@ class OCRVectorStore:
         gc.collect()
         log_memory_usage("after_gc")
         
-    def answer_question(self, question: str, k: int = 5) -> List[Dict]:
+    def answer_question(self, question: str, k: int = 50) -> List[Dict]:
         logger.warning(f"ANSWERING QUESTION: {question}")
         log_memory_usage("before_question")
         
